@@ -1,8 +1,8 @@
 
 
-
 # an list of state dictionaries
 states = [
+
 {
     "name": "Alabama",
     "capital": "Montgomery"
@@ -154,3 +154,44 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+
+# name, capital = states
+for i in states:
+    print(i['name']);
+
+# this funciton adds the new key to the list and return the modified list
+def add_tries(increment=0,s=None):
+
+    if increment and s == None:
+        newKey = "tries"
+        newValue = 0
+
+        for state in states:
+            state[newKey] = newValue
+
+        return states
+    else:  
+        i = 0
+        for state in states:
+
+           if s == state['name'] :
+               print(f"found the state: {state['name']}")
+
+        # state = states.get(s)
+        # states[s]
+
+        # return state
+        
+ 
+
+new_states = add_tries(0, 'Alabama')
+
+print(new_states)
+# print(f'{new_states} THE NEW STATES')
+
+
+# for state in states:
+
+#            if s == state['name'] :
+#                print(f"found the state: {state['name']}")
