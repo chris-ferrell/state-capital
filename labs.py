@@ -157,26 +157,45 @@ states = [
 
 
 # name, capital = states
-for i in states:
-    print(i['name']);
+# for i in states:
+#     print(i['name']);
+
+def find_state(state):
+
+    for i in range(0, len(states)):
+        if state == states[i]['name']:
+            print(f"state: {states[i]['name']} @: {i}")
+            # return i 
+            
+
 
 # this funciton adds the new key to the list and return the modified list
 def add_tries(increment=0,s=None):
 
-    if increment and s == None:
-        newKey = "tries"
-        newValue = 0
+    if increment != 0:
+        
+        pass
 
-        for state in states:
-            state[newKey] = newValue
-
-        return states
     else:  
-        i = 0
-        for state in states:
+        
+        for i in range (0, len(states)):
 
-           if s == state['name'] :
-               print(f"found the state: {state['name']}")
+            if s == states[i]['name']:
+                # print(f" Found state: {states[i]['name']} on index {i}")
+                try:
+                    print(states[i]['tries'])
+                except KeyError: #if the key doesn't exist 
+                    print(f"ERROR: {KeyError}  catch")
+                    # create the new key and add the value
+                    newKey = "tries"
+                    newValue = 1
+                    states[i][newKey] = newValue
+                
+                    return states
+
+
+        #    if s == state['name'] :
+        #        print(f"found the state: {state['name']}")
 
         # state = states.get(s)
         # states[s]
@@ -185,9 +204,10 @@ def add_tries(increment=0,s=None):
         
  
 
-new_states = add_tries(0, 'Alabama')
+# new_states = add_tries(0, 'Florida')
 
-print(new_states)
+# find_state('Florida')
+# print(new_states)
 # print(f'{new_states} THE NEW STATES')
 
 
