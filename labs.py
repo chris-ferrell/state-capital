@@ -156,42 +156,55 @@ states = [
 }]
 
 
-# name, capital = states
-# for i in states:
-#     print(i['name']);
-
 def find_state(state):
 
     for i in range(0, len(states)):
         if state == states[i]['name']:
             print(f"state: {states[i]['name']} @: {i}")
-            # return i 
-            
-
+            return i 
 
 # this funciton adds the new key to the list and return the modified list
-def add_tries(increment=0,s=None):
-
-    if increment != 0:
-        
-        pass
-
-    else:  
+def add_tries(s=None,wrg=None):
+ 
         
         for i in range (0, len(states)):
 
-            if s == states[i]['name']:
-                # print(f" Found state: {states[i]['name']} on index {i}")
-                try:
-                    print(states[i]['tries'])
-                except KeyError: #if the key doesn't exist 
-                    print(f"ERROR: {KeyError}  catch")
-                    # create the new key and add the value
-                    newKey = "tries"
-                    newValue = 1
-                    states[i][newKey] = newValue
-                
-                    return states
+            if wrg == None:
+
+                if s == states[i]['name']:
+                    
+                    # print(f" Found state: {states[i]['name']} on index {i}")
+                    try:
+                        
+                        # print(states[i]['tries'])
+                        states[find_state(s)]['correctTries'] += 1
+
+                    except KeyError: #if the key doesn't exist 
+                        print(f"ERROR: {KeyError}  catch")
+                        # create the new key and add the value
+                        newKey = "correctTries"
+                        newValue = 1
+                        states[i][newKey] = newValue
+                    
+                        return states
+            else:
+                 
+                if s == states[i]['name']:
+                    
+                    # print(f" Found state: {states[i]['name']} on index {i}")
+                    try:
+                        
+                        # print(states[i]['tries'])
+                        states[find_state(s)]['wrongTries'] += 1
+ 
+                    except KeyError: #if the key doesn't exist 
+                        print(f"ERROR: {KeyError}  catch")
+                        # create the new key and add the value
+                        newKey = "wrongTries"
+                        newValue = 1
+                        states[i][newKey] = newValue
+                    
+                        return states
 
 
         #    if s == state['name'] :
@@ -201,16 +214,38 @@ def add_tries(increment=0,s=None):
         # states[s]
 
         # return state
-        
- 
 
-# new_states = add_tries(0, 'Florida')
+def question():
+    for state in states:
+        # print(states[find_state(state['name'])]['capital'])
+        # print(state)
+        userInput = input(f" what's the Capital of {state['name']}: ")
+
+        if str(userInput) == states[find_state(state['name'])]['capital']:
+
+            print("correct")
+
+        else:
+            print("WRONG!!!")
+
+
+playing = True
+def start_game():
+    while(playing == True):
+    
+        question()
+
+
+
+
+
+start_game()
 
 # find_state('Florida')
 # print(new_states)
 # print(f'{new_states} THE NEW STATES')
-
-
+ 
+# print(add_tries(1,'Alabama'))
 # for state in states:
 
 #            if s == state['name'] :
